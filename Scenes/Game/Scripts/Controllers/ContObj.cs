@@ -148,7 +148,7 @@ public class ContObj : MonoBehaviour {
         - stop_obj
     */
     public void input_move (InGameObject _obj, Vector2 _value){
-        if (_obj.isAtk) {
+        if (_obj.isAtk || !DB_Conditions.I.can_move (_obj)) {
             _obj.isWalk = false;
             return; 
         }
@@ -175,7 +175,7 @@ public class ContObj : MonoBehaviour {
     }
 
     public void input_move_update (InGameObject _obj){
-        if (!_obj.isWalk) return;
+        if (!_obj.isWalk || !DB_Conditions.I.can_move (_obj)) return;
 
         _obj.nxtPos.x = _obj.movInput.x * 100;
         _obj.nxtPos.y = _obj.movInput.y * 100;
@@ -196,7 +196,7 @@ public class ContObj : MonoBehaviour {
     }
 
     public void move_walk_to_pos_update (InGameObject _obj){
-        if (!_obj.moveToPos_isOn) return;
+        if (!_obj.moveToPos_isOn || !DB_Conditions.I.can_move (_obj)) return;
 
         _obj.curPos = Vector2.MoveTowards (_obj.curPos, _obj.moveToPos_pos, _obj.speed * Time.deltaTime);
 
@@ -253,7 +253,7 @@ public class ContObj : MonoBehaviour {
     }
 
     public void const_move_ang_update (InGameObject _obj){
-        if (!_obj.constMovAng_isOn) return;
+        if (!_obj.constMovAng_isOn || !DB_Conditions.I.can_move (_obj)) return;
 
         Vector3 _curPos = _obj.curPos;
         float _yPos = _curPos.y + _obj.constMovAng_spd * Mathf.Sin(_obj.constMovAng_ang * Mathf.Deg2Rad);
@@ -278,7 +278,7 @@ public class ContObj : MonoBehaviour {
     }
 
     public void const_move_dir_update (InGameObject _obj){
-        if (!_obj.constMovDir_isOn) return;
+        if (!_obj.constMovDir_isOn || !DB_Conditions.I.can_move (_obj)) return;
 
         Vector2 _pos = _obj.curPos;
         // transform.Translate(_dir * speed * Time.deltaTime);

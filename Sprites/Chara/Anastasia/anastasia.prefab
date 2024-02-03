@@ -18,6 +18,8 @@ GameObject:
   - component: {fileID: 1734063162558475760}
   - component: {fileID: 970973860029378288}
   - component: {fileID: -2860898887327908908}
+  - component: {fileID: -5357515076586065808}
+  - component: {fileID: 8499769652229208895}
   m_Layer: 0
   m_Name: anastasia
   m_TagString: Untagged
@@ -296,3 +298,40 @@ MonoBehaviour:
   cdDef: 0.5
   cd: 0
   missileObj: beam1
+--- !u!114 &-5357515076586065808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734063162558475763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc85e3f0a7e5bb7428696d916d9bec3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptTag: skill
+  skillName: bindingchains
+  skillSlot: Skill1
+  mc: 0
+  cdDef: 0.5
+  cd: 0
+--- !u!114 &8499769652229208895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1734063162558475763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b287beee502e6e8469bff233b68aa163, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  scriptTag: skill
+  skillName: voidsphere
+  skillSlot: Skill2
+  mc: 0
+  cdDef: 0.5
+  cd: 0
+  missileObj: voidSphere

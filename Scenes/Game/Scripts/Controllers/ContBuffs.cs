@@ -49,7 +49,6 @@ public class ContBuffs : MonoBehaviour {
                         y: _obj.gameObject.transform.position.y + _cur.atchOffset.y,
                         z: _obj.gameObject.transform.position.z - 1 + _cur.atchOffset.z
                     );
-                    Debug.Log (_cur.attach.transform.position);
                 }
             }
         }
@@ -75,6 +74,18 @@ public class ContBuffs : MonoBehaviour {
 
     public void remove_buff (InGameObject _targ, string _buffName, bool _remFromArray = true){
         int _i  = _targ.buffs.FindIndex(b => b.name == _buffName);
+
+        destroy_buff (_targ, _i, _remFromArray);
+    }
+
+    public void remove_all_buffs (InGameObject _targ){
+        for (int _i = _targ.buffs.Count - 1; _i >= 0; _i--) {
+            destroy_buff (_targ, _i, true);
+        }
+    }
+
+    private void destroy_buff (InGameObject _targ, int _i, bool _remFromArray = true){
+        if (_i < 0 || _i >= _targ.buffs.Count) return;
 
         if (_i != -1) {
             Destroy (_targ.buffs [_i].attach);

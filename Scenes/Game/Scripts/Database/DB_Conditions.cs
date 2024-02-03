@@ -97,6 +97,14 @@ public class DB_Conditions : MonoBehaviour {
         
         return true;
     }
+
+    public bool can_move (InGameObject _obj){
+        if (_obj.type != "unit")                                                return true;
+        if (ContBuffs.I.get_has_buff (_obj, "binding-chains"))                  return false;
+
+
+        return true;
+    }
     
     public bool is_kill_on_border_pass (InGameObject _obj){
         if (_obj.type == "unit") return false;

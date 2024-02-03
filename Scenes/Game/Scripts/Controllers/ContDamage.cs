@@ -42,6 +42,7 @@ public class ContDamage : MonoBehaviour {
     }
 
     public void kill (InGameObject _def){
+        ContBuffs.I.remove_all_buffs (_def);
         ContObj.I.evt_on_death (_def);
         Destroy (_def.gameObject);
     }

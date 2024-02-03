@@ -28,6 +28,7 @@ public class Skill_Dash : SkillTrig {
         
         // PROPELL DASH
         InGameObject _ownerComp = gameObject.GetComponent <InGameObject> ();
+        if (!DB_Conditions.I.can_move (_ownerComp)) return;
         Vector2 _pos = gameObject.transform.position;
 
         ContObj.I.change_facing (_ownerComp, (Calculator.I.is_mouse_left_of_object (_ownerComp) ? "left" : "right"));
