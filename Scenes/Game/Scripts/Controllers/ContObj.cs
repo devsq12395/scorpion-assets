@@ -27,6 +27,7 @@ public class ContObj : MonoBehaviour {
         _comp.owner = _player;
         
         set_default_skills (_comp);
+        setup_events (_comp);
 
         return _obj;
     }
@@ -377,6 +378,15 @@ public class ContObj : MonoBehaviour {
     }
     
     // Events
+    public void setup_events (InGameObject _obj){
+        List<EvtTrig> _evts = new List<EvtTrig> ();
+        _evts.AddRange (_obj.gameObject.GetComponents <EvtTrig> ());
+        
+        foreach (EvtTrig _evt in _evts) {
+            _evt.setup ();
+        }
+    }
+
     public List<EvtTrig> get_evts_with_trigger_name (InGameObject _obj, string _trigName){
         List<EvtTrig> _ret = new List<EvtTrig> ();
         List<EvtTrig> _evts = new List<EvtTrig> ();

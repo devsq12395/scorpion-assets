@@ -46,6 +46,8 @@ public class ContPlayer : MonoBehaviour {
             _p.checkBorder = false;
             _p.isInvul = true;
             players.Add (_p);
+            
+            MUI_CharPane.I.create_char (_ch - 1);
         }
         pla_curSel = PlayerPrefs.GetInt ("player_charSel");
         player = players [pla_curSel];

@@ -12,7 +12,7 @@ public class Game : MonoBehaviour {
     void Start() {
         // PlayerPrefs for testing
         PlayerPrefs.SetString ("map", "testMap");
-        PlayerPrefs.SetString ("player_charName1", "hero");
+        PlayerPrefs.SetString ("player_charName1", "seraphine");
         PlayerPrefs.SetString ("player_charName2", "anastasia");
         PlayerPrefs.SetString ("player_charName3", "");
         PlayerPrefs.SetString ("player_charName4", "");
@@ -32,10 +32,10 @@ public class Game : MonoBehaviour {
         }
         
         // Setups
+        MUI_CharPane.I.setup ();
         ContMap.I.setup_map ();
         ContPlayer.I.setup_player ();
         GameUI_InGameTxt.I.setup ();
-        MUI_CharPane.I.setup ();
         
         gameReady = true;
     }
@@ -46,6 +46,7 @@ public class Game : MonoBehaviour {
         ContPlayer.I.update ();
         
         MUI_HPBars.I.update_bars ();
+        MUI_CharPane.I.update ();
     }
 
     // Accesibility

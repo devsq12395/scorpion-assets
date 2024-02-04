@@ -44,7 +44,7 @@ public class InGameEffect : MonoBehaviour
         update_render ();
     }
 
-    public void destroy_game_object () { Debug.Log ("done");
+    public void destroy_game_object () {
         // Used by Unity animator
         Destroy (gameObject);
     }

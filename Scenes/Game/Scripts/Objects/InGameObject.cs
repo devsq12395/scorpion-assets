@@ -8,9 +8,11 @@ public class InGameObject : MonoBehaviour {
     [Header("------ UNITY EDITOR EDITABLE PARTS ------")]
     public string name; 
     public string type;
+    [Header("Types: unit, missile, collect. Put dummies as missile")]
         // TYPES: unit, missile, collect
         // To be set in Unity GameObject's component
-    public int owner, id;
+    public int owner;
+    public int id;
 
     // Settable in Unity
     public int hp, hpMax, mp, mpMax, mpRegen;

@@ -11,15 +11,15 @@ public class DB_Objects : MonoBehaviour {
 
     [Header("----- Units -----")]
     public GameObject hero;
-    public GameObject samurai, anastasia, greenSlime, orcShaman, kitsune;
+    public GameObject samurai, anastasia, greenSlime, orcShaman, kitsune, seraphine;
 
     [Header("----- Missiles -----")]
     public GameObject testMissile1;
-    public GameObject beam1, kitsuneMissile, molotovMsl, voidSphere;
+    public GameObject beam1, kitsuneMissile, molotovMsl, voidSphere, iceMissile01;
 
     [Header("----- Effects -----")]
     public GameObject explosion1;
-    public GameObject explosion2, damTxt, explosion1_mini, molotovEfct, bindChainExp1, bindChainExp2, voidSphereHit, voidSphereCast, frostWaveHit, 
+    public GameObject explosion2, explosion3, damTxt, explosion1_mini, molotovEfct, bindChainExp1, bindChainExp2, voidSphereHit, voidSphereCast, frostWaveHit, 
         frostWaveCast;
 
     [Header("----- Buffs -----")]
@@ -46,6 +46,7 @@ public class DB_Objects : MonoBehaviour {
             case "hero":                    _refObj = hero; break;
             case "samurai":                 _refObj = samurai; break;
             case "anastasia":               _refObj = anastasia; break;
+            case "seraphine":               _refObj = seraphine; break;
 
             // Enemies
             case "greenSlime":              _refObj = greenSlime; break;
@@ -59,11 +60,13 @@ public class DB_Objects : MonoBehaviour {
             case "kitsuneMissile":          _refObj = kitsuneMissile; break;
             case "molotovMsl":              _refObj = molotovMsl; break;
             case "voidSphere":              _refObj = voidSphere; break;
+            case "iceMissile01":              _refObj = iceMissile01; break;
 
             // Effects
             case "explosion1":              _refObj = explosion1; break;
             case "explosion1_mini":         _refObj = explosion1_mini; break;
             case "explosion2":              _refObj = explosion2; break;
+            case "explosion3":         _refObj = explosion3; break;
             case "molotovEfct":             _refObj = molotovEfct; break;
             case "bindChainExp1":             _refObj = bindChainExp1; break;
             case "bindChainExp2":             _refObj = bindChainExp2; break;
