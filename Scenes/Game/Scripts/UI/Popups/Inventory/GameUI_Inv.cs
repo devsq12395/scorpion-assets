@@ -10,11 +10,11 @@ public class GameUI_Inv : MonoBehaviour
     public static GameUI_Inv I;
 	public void Awake(){ I = this; }
 
+    public GameObject goUI, goCanvas;
+
     public GameObject go;
     public TextMeshProUGUI tPage;
     public int NUMBER_OF_BUTTONS;
-    public List<Button> buttons;
-    public List<TextMeshProUGUI> btnTxt;
     
     public int pageCur, pageMax;
     public int NUM_OF_ITEMS_PER_PAGE;
@@ -47,31 +47,25 @@ public class GameUI_Inv : MonoBehaviour
         go.SetActive (false);
         mode = "hide";
     }
+
+    public void create_item (){
+        GameObject _newItemUI = Instantiate(goUI, goCanvas.transform);
+        RectTransform _transform = _newItemUI.GetComponent<RectTransform>();
+
+        _transform.anchoredPosition = new Vector2(-110f - 100f * chars.Count, -118f);
+
+        Image portImage = _newItemUI.transform.Find("Port").GetComponent<Image>();
+        Image hpBarImage = _newItemUI.transform.Find("HPBar").transform.Find("BarValue_HP").GetComponent<Image>();
+        Image mpBarImage = _newItemUI.transform.Find("MPBar").transform.Find("BarValue_MP").GetComponent<Image>();
+
+        Char _newChar = new Char(_num, _newItemUI, portImage, hpBarImage, mpBarImage);
+        chars.Add(_newChar);
+    }
     
     // UI Manipulation
     public void switch_page (int _inc){
         pageCur += _inc;
         if (pageCur > pageMax)  pageCur = 0;
         if (pageCur < 0)        pageCur = pageMax;
-    }
-    
-    public void refresh_ui_list (){
-        List<DB_Items.Item> _items = ContPlayer.I.items;
-        int _pI = (NUM_OF_ITEMS_PER_PAGE * pageCur) + NUMBER_OF_BUTTONS;
-        pageMax = (_items.Count - 1) / NUM_OF_ITEMS_PER_PAGE + 1;
-        
-        for (int i = NUM_OF_ITEMS_PER_PAGE * pageCur; i < _pI; i++){
-            DB_Items.Item _item = _items [i];
-
-            btnTxt [i].text = _item.nameUI;
-        }
-        
-        tPage.text = pageCur.ToString () + "/" + pageMax.ToString ();
-    }
-    
-    public void select_item (int _btnInd){
-        List<DB_Items.Item> _items = ContPlayer.I.items;
-        int _itemNum = (NUM_OF_ITEMS_PER_PAGE * pageCur) + _btnInd;
-        GameUI_ChkItm.I.show (_items [_itemNum]);
     }
 }
