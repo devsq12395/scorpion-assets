@@ -36,6 +36,7 @@ public class Game : MonoBehaviour {
         ContMap.I.setup_map ();
         ContPlayer.I.setup_player ();
         GameUI_InGameTxt.I.setup ();
+        ContItem.I.setup ();
         
         gameReady = true;
     }

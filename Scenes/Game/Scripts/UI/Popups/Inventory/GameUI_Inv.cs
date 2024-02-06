@@ -4,8 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class GameUI_Inv : MonoBehaviour
-{
+public class GameUI_Inv : MonoBehaviour {
     
     public static GameUI_Inv I;
 	public void Awake(){ I = this; }
@@ -18,12 +17,8 @@ public class GameUI_Inv : MonoBehaviour
     
     public int pageCur, pageMax;
     public int NUM_OF_ITEMS_PER_PAGE;
-    
-    public string mode = "check";
-        // Modes:
-        // "hide" = UI is not showing
-        // "check" = checking the inventory
-        // "equip" = selecting an equippable item from the inventory
+
+    public List<string> items;
 
     void Start() {
         go.SetActive (true);
@@ -40,7 +35,8 @@ public class GameUI_Inv : MonoBehaviour
     public void show (string _mode){
         mode = _mode;
         go.SetActive (true);
-        refresh_ui_list ();
+
+        update_item_list ();
     }
 
     public void hide (){
@@ -48,18 +44,30 @@ public class GameUI_Inv : MonoBehaviour
         mode = "hide";
     }
 
-    public void create_item (){
+    public void update_item_list (){
+
+    }
+
+    public void create_item (string _txt){
         GameObject _newItemUI = Instantiate(goUI, goCanvas.transform);
         RectTransform _transform = _newItemUI.GetComponent<RectTransform>();
 
-        _transform.anchoredPosition = new Vector2(-110f - 100f * chars.Count, -118f);
+        int _COLUMN_COUNT = 2;
+        float   _ITEM_WIDTH = 100f, _ITEM_HEIGHT = 100f, _XPOS_START = -110, _YPOS_START = -110,
+                _HORIZ_SPACING = 10f, _VERT_SPACING = 10f;
 
-        Image portImage = _newItemUI.transform.Find("Port").GetComponent<Image>();
-        Image hpBarImage = _newItemUI.transform.Find("HPBar").transform.Find("BarValue_HP").GetComponent<Image>();
-        Image mpBarImage = _newItemUI.transform.Find("MPBar").transform.Find("BarValue_MP").GetComponent<Image>();
+        GameObject _newItemUI = Instantiate(goUI, goCanvas.transform);
+        RectTransform _transform = _newItemUI.GetComponent<RectTransform>();
 
-        Char _newChar = new Char(_num, _newItemUI, portImage, hpBarImage, mpBarImage);
-        chars.Add(_newChar);
+        int _row = items.Count / _COLUMN_COUNT,
+            _col = items.Count % _COLUMN_COUNT;
+
+        _transform.anchoredPosition = new Vector2(
+            _XPOS_START + _col * (_ITEM_WIDTH + _HORIZ_SPACING), 
+            _YPOS_START + _row * (_ITEM_HEIGHT + _VERT_SPACING)
+        );
+
+        items.Add (_newItemUI);
     }
     
     // UI Manipulation

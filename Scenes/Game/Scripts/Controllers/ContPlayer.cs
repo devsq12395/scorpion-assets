@@ -108,15 +108,11 @@ public class ContPlayer : MonoBehaviour {
         DB_Items.Item _new = DB_Items.I.get_item (_name);
         items.Add (_new);
         save_item (items.Count - 1, _name);
-        
-        if (GameUI_Inv.I.mode != "hide") GameUI_Inv.I.refresh_ui_list ();
     }
     
     public void remove_item (string _id) {
         items.RemoveAt (get_item_index (_id));
         save_items ();
-        
-        if (GameUI_Inv.I.mode != "hide") GameUI_Inv.I.refresh_ui_list ();
     }
 
     public void save_item (int _slot, string _name){
