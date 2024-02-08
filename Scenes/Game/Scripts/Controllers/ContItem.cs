@@ -10,16 +10,16 @@ public class ContItem : MonoBehaviour {
 	public void Awake(){ I = this; }
 
     public List<DB_Items.Item> items;
+    private string FILEPATH;
 
     public void setup (){
+        FILEPATH = Application.persistentDataPath + "/items.json";
         load_json ();
     }
 
     private void load_json (){
-        string _filePath = Application.persistentDataPath + "/items.json";
-
-        if (File.Exists(_filePath)) {
-            string json = File.ReadAllText(filePath);
+        if (File.Exists(FILEPATH)) {
+            string json = File.ReadAllText(FILEPATH);
             items = JsonUtility.FromJson<List<DB_Items.Item>>(json);
         } else {
             save_json ();
@@ -28,7 +28,7 @@ public class ContItem : MonoBehaviour {
 
     private void save_json (){
         string json = JsonUtility.ToJson(items);
-        File.WriteAllText(filePath, json);
+        File.WriteAllText(FILEPATH, json);
     }
 
     public void add_item (){

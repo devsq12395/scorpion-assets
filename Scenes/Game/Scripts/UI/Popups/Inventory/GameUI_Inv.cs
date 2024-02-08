@@ -14,6 +14,8 @@ public class GameUI_Inv : MonoBehaviour {
     public GameObject go;
     public TextMeshProUGUI tPage;
     public int NUMBER_OF_BUTTONS;
+
+    public string mode;
     
     public int pageCur, pageMax;
     public int NUM_OF_ITEMS_PER_PAGE;
@@ -56,9 +58,6 @@ public class GameUI_Inv : MonoBehaviour {
         float   _ITEM_WIDTH = 100f, _ITEM_HEIGHT = 100f, _XPOS_START = -110, _YPOS_START = -110,
                 _HORIZ_SPACING = 10f, _VERT_SPACING = 10f;
 
-        GameObject _newItemUI = Instantiate(goUI, goCanvas.transform);
-        RectTransform _transform = _newItemUI.GetComponent<RectTransform>();
-
         int _row = items.Count / _COLUMN_COUNT,
             _col = items.Count % _COLUMN_COUNT;
 
@@ -67,7 +66,7 @@ public class GameUI_Inv : MonoBehaviour {
             _YPOS_START + _row * (_ITEM_HEIGHT + _VERT_SPACING)
         );
 
-        items.Add (_newItemUI);
+        items.Add (_txt);
     }
     
     // UI Manipulation
